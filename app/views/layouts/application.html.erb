@@ -8,18 +8,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
-    <h1>STEPS</h1>
-
     <% flash.each do |name, msg| %>
-    <p>
-      <strong> <%= name.capitalize %>: <%= msg %> </strong>
-      </p>
-      <% end %>
-
+      <strong><%= name.capitalize %>: <%= msg %></strong>
+    <% end %>
     <h1><%= link_to 'STEPS', root_path %></h1>
-    
   </header>
-  
+
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -35,13 +29,18 @@
           <hr>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li><%= link_to "Log Out", logout_path %></li>
+          <% else %>
             <li><%= link_to "Sign Up", new_user_path %></li>
+            <li><%= link_to "Log In", login_path %></li>
+          <% end %>
             <li><%= link_to "Posts", posts_path %></li>
         </ul>
       </div>
     </div>
   </nav>
-  
+
   <div class="col col-sm-6">
   <body class="container">
     <%= yield %>

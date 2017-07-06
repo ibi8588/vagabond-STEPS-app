@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   resources :users
   resources :cities
   resources :posts
-  resources :sessions
+
+  get '/login', to: 'sessions#new', as: 'login'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
+  post '/sessions', to: 'sessions#create'
+
 end
