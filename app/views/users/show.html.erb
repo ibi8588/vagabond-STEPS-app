@@ -4,4 +4,5 @@
 <p>
   Username: <%= @user.username %>
 </p>
-<img title="profile picture" src="<%= @user.profile_pic %>" >
+<img title="profile picture" src="<%= @user.profile_pic %>" ><hr />
+<%= link_to "Edit my Profile Information", edit_user_path(@user) %>
