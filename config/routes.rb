@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :users
   resources :cities
   resources :posts
+  resources :sessions
 end

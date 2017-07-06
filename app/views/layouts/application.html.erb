@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <% flash.each do |name, msg| %>
+    <p>
+      <strong> <%= name.capitalize %>: <%= msg %> </strong>
+      </p>
+      <% end %>
+
     <%= yield %>
   </body>
 </html>
