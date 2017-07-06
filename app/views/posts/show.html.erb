@@ -2,3 +2,4 @@
 <p><%= @post.trip_date %></p>
 <p><%= @post.description %></p>
 <%= link_to "Edit Post", edit_post_path %>
+<%= link_to "Delete Post", @post, :method => :delete %>
