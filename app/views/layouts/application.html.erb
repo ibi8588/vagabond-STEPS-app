@@ -11,6 +11,12 @@
     <h1>STEPS</h1>
   </header>
   <body>
+    <% flash.each do |name, msg| %>
+    <p>
+      <strong> <%= name.capitalize %>: <%= msg %> </strong>
+      </p>
+      <% end %>
+
     <%= yield %>
   </body>
 </html>
