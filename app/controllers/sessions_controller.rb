@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       flash[:error] = "You done goofed!"
-      redirect_to new_session_path
+      redirect_to login_path
     end
   end
 

@@ -8,9 +8,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
+    @user = User.new(user_params)
     if @user.save
       #flash notice
+      login(@user)
       redirect_to user_path(@user)
     else
       #flash error
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :profile_pic )
+    params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :profile_pic )
   end
 
 end
