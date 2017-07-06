@@ -1,0 +1,10 @@
+<h2>Posts</h2>
+
+<%= link_to "Add New Post", new_post_path %>
+
+<% @posts.each do |post| %>
+  <h3><%= link_to post.title, post_path(post) %></h3>
+  <%= image_tag src= "https://lonelyplanetimages.imgix.net/a/g/hi/t/9cf024dfd5c0bcb2b17f4785340145ea-san-francisco.jpg?sharp=10&vib=20&w=1200", width: "200px"%>
+  <p><%= post.trip_date %></p>
+  <p><%= post.description %></p>
+<% end %>
