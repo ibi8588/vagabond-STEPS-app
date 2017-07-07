@@ -7,3 +7,4 @@
 </p>
 <img title="profile picture" src="<%= @user.profile_pic %>" ><hr />
 <%= link_to "Edit my Profile Information", edit_user_path(@user) %>
+<p>Join Date: <%= @user.created_at.to_formatted_s(:long_ordinal)  %></p>
