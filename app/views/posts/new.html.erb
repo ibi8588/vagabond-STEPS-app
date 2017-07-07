@@ -2,6 +2,7 @@
 <%= form_for @post do |f| %>
   <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
   <%= f.hidden_field :city_id, :value => "2" %>
+  <%= f.hidden_field :author, :value => "#{current_user.first_name} #{current_user.last_name}" %>
   <div class="form-group">
     <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
   </div>
