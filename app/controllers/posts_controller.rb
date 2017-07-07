@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
+  before_action :require_login, only: [:new, :edit, :destroy, :update, :create]
+
   def index
     @posts = Post.all
+
   end
 
   def new
@@ -9,7 +12,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-      redirect_to @post
+    @post.save
+      redirect_to posts_path
   end
 
   def show
@@ -37,7 +41,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :trip_date, :photo)
+    params.require(:post).permit(:title, :description, :trip_date, :photo, :user_id, :city_id)
   end
 
 end
