@@ -1,5 +1,5 @@
 <h4><%= @post.title %></h4>
-<%= @post.trip_pic %>
+<%= image_tag("#{@post.trip_pic}", size: "200x200") %>
 <p><%= @post.trip_date %></p>
 <p><%= @post.description %></p>
 
