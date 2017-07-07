@@ -3,8 +3,8 @@
 <%= form_for @user do |f| %>
   <p>First Name: <%= f.text_field :first_name %></p>
   <p>Last Name: <%= f.text_field :last_name %></p>
-  <p>Username: <%= f.text_field :username %></p>
-  <p>Password: <%= f.text_field :password %></p>
+  <p>Email: <%= f.email_field :username %></p>
+  <p>Password: <%= f.password_field :password %></p>
   <p>Profile Picture: <%= f.text_field :profile_pic %></p>
   <%= f.submit "Sign-up" %>
 <% end %>
