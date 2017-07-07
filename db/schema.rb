@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20170707212913) do
+=======
 ActiveRecord::Schema.define(version: 20170707210938) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +36,11 @@ ActiveRecord::Schema.define(version: 20170707210938) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "city_id"
+<<<<<<< HEAD
+    t.string "author"
+=======
     t.string "trip_pic"
+>>>>>>> master
     t.index ["city_id"], name: "index_posts_on_city_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -45,6 +53,12 @@ ActiveRecord::Schema.define(version: 20170707210938) do
     t.string "profile_pic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "encrypted_password", limit: 128
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
   add_foreign_key "posts", "cities"
