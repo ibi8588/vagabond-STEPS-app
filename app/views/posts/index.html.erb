@@ -4,7 +4,11 @@
 
 <% @posts.each do |post| %>
   <h3><%= link_to "TITLE", post_path(post) %></h3>
-  <%= image_tag src= "https://lonelyplanetimages.imgix.net/a/g/hi/t/9cf024dfd5c0bcb2b17f4785340145ea-san-francisco.jpg?sharp=10&vib=20&w=1200", width: "200px"%>
+  <% if post.trip_pic %>
+    <%= image_tag src= "#{post.trip_pic}", width: "200px"%>
+  <% else %>
+    <%= image_tag src= "https://lonelyplanetimages.imgix.net/a/g/hi/t/9cf024dfd5c0bcb2b17f4785340145ea-san-francisco.jpg?sharp=10&vib=20&w=1200", width: "200px"%>
+  <% end %>
   <p><%= post.trip_date %></p>
   <p><%= post.description %></p>
 <% end %>
