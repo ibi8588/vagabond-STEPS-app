@@ -1,5 +1,7 @@
 <h4> Add a New Post </h4>
 <%= form_for @post do |f| %>
+  <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
+  <%= f.hidden_field :city_id, :value => "2" %>
   <div class="form-group">
     <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
   </div>
