@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170707212913) do
+=======
+ActiveRecord::Schema.define(version: 20170707210938) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +36,11 @@ ActiveRecord::Schema.define(version: 20170707212913) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "city_id"
+<<<<<<< HEAD
     t.string "author"
+=======
+    t.string "trip_pic"
+>>>>>>> master
     t.index ["city_id"], name: "index_posts_on_city_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -40,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170707212913) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "username"
+    t.string "email"
     t.string "password_digest"
     t.string "profile_pic"
     t.datetime "created_at", null: false

@@ -1,4 +1,5 @@
 <h4><%= @post.title %></h4>
+<%= @post.trip_pic %>
 <p><%= @post.trip_date %></p>
 <p><%= @post.description %></p>
 
@@ -6,4 +7,3 @@
 <%= link_to "Delete Post", @post, :method => :delete , class: "btn btn-danger" %>
 <br>
 <%= link_to "Return Home", root_path %>
-
