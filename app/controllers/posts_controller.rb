@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @cities = City.all
   end
 
   def create
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :trip_date, :trip_pic, :user_id, :city_id, :author)
+    params.require(:post).permit(:title, :description, :trip_date, :trip_pic, :user_id, :author, :city_id)
   end
 
 end
