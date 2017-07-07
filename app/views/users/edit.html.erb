@@ -3,7 +3,7 @@
 <%= form_for @user do |f| %>
   <p>First Name: <%= f.text_field :first_name, placeholder: "Edith" %></p>
   <p>Last Name: <%= f.text_field :last_name, placeholder: "Piaf" %></p>
-  <p>Username: <%= f.text_field :username %></p>
+  <p>Email: <%= f.text_field :email %></p>
   <p>Profile Picture: <%= f.text_field :profile_pic %></p>
   <%= f.submit "Save Profile Changes" %>
 <% end %>
