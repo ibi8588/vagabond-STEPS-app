@@ -10,7 +10,7 @@
 
 <% city_posts.reverse.each do |cp| %>
 <div>
-  <%= cp.title %>
+  <%= link_to "#{cp.title}", post_path(cp) %>
   <%= cp.description %>
   <%= cp.created_at %><br />
 </div>

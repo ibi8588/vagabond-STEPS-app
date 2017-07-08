@@ -14,6 +14,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.save
+      if @post.trip_pic == ""
+        @post.trip_pic = "https://lonelyplanetimages.imgix.net/a/g/hi/t/9cf024dfd5c0bcb2b17f4785340145ea-san-francisco.jpg?sharp=10&vib=20&w=1200"
+        @post.save
+      end
       redirect_to posts_path
   end
 
