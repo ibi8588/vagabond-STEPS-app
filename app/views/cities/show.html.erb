@@ -4,11 +4,14 @@
 <h3>State: <%= @city.state %></h3>
 <h3>Country: <%= @city.country %></h3><hr />
 
-<% @posts.select do |post| %>
-  <% if post.city_id == @city.id %>
-    <div>
-      <%= post.title %>
-      <%= post.description %><br />
-    </div>
-  <% end %>
+<% city_posts = @posts.select do |post| %>
+  <% post.city_id == @city.id %>
 <% end %>
+
+<% city_posts.reverse.each do |cp| %>
+<div>
+  <%= cp.title %>
+  <%= cp.description %>
+  <%= cp.created_at %><br />
+</div>
+<%end %>
