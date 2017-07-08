@@ -10,6 +10,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      default_pic = "http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png"
+      if @user.profile_pic == ""
+        @user.profile_pic = default_pic
+        @user.save
+      end
       #flash notice
       login(@user)
       redirect_to user_path(@user)
@@ -17,6 +22,8 @@ class UsersController < ApplicationController
       #flash error
       redirect_to new_user_path
     end
+
+
   end
 
     def show

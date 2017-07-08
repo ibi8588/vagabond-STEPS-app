@@ -5,6 +5,6 @@
   <% @user %>
   Email: <%= @user.email %>
 </p>
-<%= image_tag src="#{ @user.profile_pic}", width:"200px" %><hr />
+<%= image_tag src="#{@user.profile_pic}", width:"200px" %><hr />
 <%= link_to "Edit my Profile Information", edit_user_path(@user) %>
 <p>Join Date: <%= @user.created_at.to_formatted_s(:long_ordinal)  %></p>
