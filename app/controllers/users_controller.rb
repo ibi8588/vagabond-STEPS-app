@@ -27,15 +27,15 @@ class UsersController < ApplicationController
   end
 
     def show
-      @user = User.find_by_id(params[:id])
+      @user = User.find_by_first_name(params[:id])
     end
 
     def edit
-      @user = User.find_by_id(params[:id])
+      @user = User.find_by_first_name(params[:id])
     end
 
     def update
-      @user = User.find_by_id(params[:id])
+      @user = User.find_by_first_name(params[:id])
       @user.update(user_params)
       #flash notice
       redirect_to user_path(@user)
