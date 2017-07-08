@@ -3,13 +3,18 @@
 <%= link_to "Add New Post", new_post_path %>
 
 <% @posts.each do |post| %>
-  <h3><%= link_to "TITLE", post_path(post) %></h3>
+  <h3><%= link_to "#{post.title}", post_path(post) %></h3>
   <% if post.trip_pic %>
     <%= image_tag src="#{post.trip_pic}", width: "200px" %>
   <% else %>
     <%= image_tag src= "https://lonelyplanetimages.imgix.net/a/g/hi/t/9cf024dfd5c0bcb2b17f4785340145ea-san-francisco.jpg?sharp=10&vib=20&w=1200", width: "200px"%>
   <% end %>
   <p><%= post.trip_date %></p>
-  <p>Author: <%= post.author %></p>
-  <p><%= post.description %></p>
+  <% pic = @users.select do |user| %>
+    <% if post.user_id == user.id %>
+        <%= image_tag src="#{user.profile_pic}", width:"100px" %><br />
+    <% end %>
+  <% end %>
+  <p><%= post.author %></p>
+  <p><%= post.description %></p><hr />
 <% end %>
