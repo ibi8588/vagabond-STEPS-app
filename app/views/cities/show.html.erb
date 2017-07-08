@@ -4,7 +4,11 @@
 <h3>State: <%= @city.state %></h3>
 <h3>Country: <%= @city.country %></h3><hr />
 
-<% @posts.select do |post| (post.city_id == @city.id) %>
-  <%= post.title %>
-  <%= post.description %>
+<% @posts.select do |post| %>
+  <% if post.city_id == @city.id %>
+    <div>
+      <%= post.title %>
+      <%= post.description %><br />
+    </div>
+  <% end %>
 <% end %>
