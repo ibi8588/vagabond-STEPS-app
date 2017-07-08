@@ -23,4 +23,20 @@ module SessionsHelper
       redirect_to login_path
     end
   end
+
+  def require_this_is_me
+    unless logged_in? && params[:id] == current_user.first_name
+      flash[:error] = "You can't do that, jerk! You are not logged-in as this user."
+      redirect_to posts
+    end
+  end
+
+  # def require_posts_permission
+  #   unless logged_in? &&  == current_user.id
+  #     flash[:error] = "Hey, idiot. You can't edit or delete someone else's posts. Not cool."
+  #     redirect_to posts
+  #   end
+  # end
+
+
 end

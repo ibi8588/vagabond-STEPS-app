@@ -5,6 +5,8 @@
   <% @user %>
   Email: <%= @user.email %>
 </p>
-<img title="profile picture" src="<%= @user.profile_pic %>" ><hr />
-<%= link_to "Edit my Profile Information", edit_user_path(@user) %>
+<%= image_tag src="#{@user.profile_pic}", width:"200px" %><hr />
+<% if current_user.id == @user.id %>
+  <%= link_to "Edit my Profile Information", edit_user_path(@user) %>
+<% end %>
 <p>Join Date: <%= @user.created_at.to_formatted_s(:long_ordinal)  %></p>

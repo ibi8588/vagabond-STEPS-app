@@ -4,7 +4,32 @@
 <h3>State: <%= @city.state %></h3>
 <h3>Country: <%= @city.country %></h3><hr />
 
-<% @posts.select do |post| (post.city_id == @city.id) %>
-  <%= post.title %>
-  <%= post.description %>
+
+<% city_posts = @posts.select do |post| %>
+  <% post.city_id == @city.id %>
 <% end %>
+
+<% city_posts.reverse.each do |cp| %>
+<div>
+  <%= link_to "#{cp.title}", post_path(cp) %><br />
+  <%= image_tag src="#{cp.trip_pic}" %>
+  <p>
+    Author: <%= cp.author %>
+  </p>
+  <%= image_tag src="#{@users.find(cp.user_id).profile_pic}", width: "100px" %>
+  <% days_ago = date_subtr(cp.created_at.to_s) %>
+  <% if days_ago < 1 %>
+    <%= "Posted: today" %>
+  <% else %>
+    <%"Posted: #{days_ago} days ago" %>
+  <% end %><br />
+  <%= truncate(cp.description, length: 1000) { link_to "read more", post_path(cp)} %><br />
+  <% if cp.user_id == current_user.id %>
+    <%= button_to "Edit this Post", edit_post_path(cp), method: "get", action: "edit"%><br />
+    <%= button_to "Delete this Post", "/posts/#{cp.id}", method: "delete", action:"destroy", data: {confirm: "Are you sure you want to delete #{cp.title}?"} %>
+  <% end %>
+  <br />
+</div>
+<%end %>
+<hr />
+<%= button_to "Add New Post", new_post_path, action:"new", method: "get" %>
