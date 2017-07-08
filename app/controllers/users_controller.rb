@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_this_is_me, only: [:edit, :update]
+
   def index
     @users = User.all
   end
@@ -15,11 +17,11 @@ class UsersController < ApplicationController
         @user.profile_pic = default_pic
         @user.save
       end
-      #flash notice
+      flash[:notice] = "CONGRATS, you've signed-up successfully!! WOOOOHOOO!! GO CRAZY!!!"
       login(@user)
       redirect_to user_path(@user)
     else
-      #flash error
+      flash[:error] = @user.errors.full_messages
       redirect_to new_user_path
     end
 

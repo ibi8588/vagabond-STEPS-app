@@ -2,15 +2,21 @@
 
 <%= link_to "Add New Post", new_post_path %>
 
-<% @posts.each do |post| %>
+<% @posts.reverse.each do |post| %>
   <h3><%= link_to "#{post.title}", post_path(post) %></h3>
     <%= image_tag src="#{post.trip_pic}", width: "200px" %>
-  <p><%= post.trip_date %></p>
+  <p>Trip Date: <%= post.trip_date %></p>
+  <% days_ago = date_subtr(post.created_at.to_s) %>
+  <% if days_ago < 1 %>
+    <%= "Posted: today" %>
+  <% else %>
+    <%"Posted: #{days_ago} days ago" %>
+  <% end %><br />
   <% pic = @users.select do |user| %>
     <% if post.user_id == user.id %>
         <%= image_tag src="#{user.profile_pic}", width:"100px" %><br />
     <% end %>
   <% end %>
   <p><%= post.author %></p>
-  <p><%= post.description %></p><hr />
+  <p><%= truncate(post.description, length: 1000) { link_to "read more", post_path(post)} %><br /></p><hr />
 <% end %>

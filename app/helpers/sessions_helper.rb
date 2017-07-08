@@ -23,4 +23,13 @@ module SessionsHelper
       redirect_to login_path
     end
   end
+
+  def require_this_is_me
+    unless logged_in? && params[:id] == current_user.first_name
+      flash[:error] = "You can't edit someone else's profile page, jerk!"
+      redirect_to user_path(current_user)
+    end
+  end
+
+
 end

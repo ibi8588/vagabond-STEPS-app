@@ -21,7 +21,7 @@ class User < ApplicationRecord
     presence: true,
     format: { with: VALID_EMAIL_REGEX },
     uniqueness: true,
-    length: { maximum: 20 }
+    length: { maximum: 90 }
 
   def self.confirm(params)
     @user = User.find_by({email: params[:email]})
