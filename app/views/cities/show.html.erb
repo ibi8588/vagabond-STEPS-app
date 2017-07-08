@@ -4,6 +4,12 @@
 <h3>State: <%= @city.state %></h3>
 <h3>Country: <%= @city.country %></h3><hr />
 
+
+
+
+
+
+
 <% city_posts = @posts.select do |post| %>
   <% post.city_id == @city.id %>
 <% end %>
@@ -12,6 +18,10 @@
 <div>
   <%= link_to "#{cp.title}", post_path(cp) %><br />
   <%= image_tag src="#{cp.trip_pic}" %>
+  <p>
+    Author: <%= cp.author %>
+  </p>
+  <%= image_tag src="#{@users.find(cp.user_id).profile_pic}", width: "100px" %>
   <% days_ago = date_subtr(cp.created_at.to_s) %>
   <% if days_ago < 1 %>
     <%= "Posted: today" %>

@@ -6,6 +6,7 @@ class CitiesController < ApplicationController
   def show
     @city = City.find_by_city(params[:id])
     @posts = Post.all
+    @users = User.all
   end
 
 end
