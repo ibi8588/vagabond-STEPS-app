@@ -2,7 +2,7 @@
 <% @post.comments.each do |comment| %>
   <p>
     <strong>Commenter:</strong>
-    <%= comment.commenter %>
+    <%= current_user.email %>
   </p>
 
   <p>

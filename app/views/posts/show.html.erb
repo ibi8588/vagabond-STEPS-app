@@ -6,23 +6,24 @@
 <p><%= @post.description %></p>
 
 <h2>Comments</h2>
-<%= @post.comments.each do |comment| %>
+<%= render @post.comments %>
+<!-- <%= @post.comments.each do |comment| %>
   <p>
     <strong>Commenter:</strong>
-    <%= comment.commenter %>
+    <%= current_user.email %>
   </p>
 
    <p>
      <strong>Comment:</strong>
      <%= comment.body %>
    </p>
-<% end %>
+<% end %> -->
 
 <h2>Add a comment:</h2>
 <%= form_for([@post, @post.comments.build]) do |f| %>
   <p>
     <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
+    <%= current_user.email %>
   </p>
   <p>
     <%= f.label :body %><br>
