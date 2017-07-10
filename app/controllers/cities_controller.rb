@@ -5,8 +5,8 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find_by_city(params[:id])
-    @posts = Post.all
     @users = User.all
+    @city_posts = @city.posts.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
   end
 
 
