@@ -9,4 +9,5 @@ class CitiesController < ApplicationController
     @users = User.all
   end
 
+
 end
