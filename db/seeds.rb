@@ -14,8 +14,8 @@ city_list = [
 { city: "Puerto Vallarta", state:"Jalisco", country:"Mexico", photo: "http://hotelcrownparadiseclubpuertovallarta.com/filesystem/club-puerto-vallarta/blog-club-pv/puerto-vallarta-articulo.png" }
 ]
 
-city_list.each do |c, s, cn|
-  City.create(city: c, state: s, country: cn)
+city_list.each do |el|
+  City.create(city: el.city, state: el.state, country: el.country, photo: el.photo)
 end
 
 User.destroy_all
@@ -28,6 +28,6 @@ user_list = [
   { first_name: "Dan", last_name:"Daniels",password_digest: "easy", profile_pic: "http://www.ris.world/sites/default/files/o-OLD-GENTLEMAN-facebook.jpg", email: "bestdayever@gmail.com" },
 ]
 
-user_list.each do |f,l,pass,pic,em|
-  User.create(first_name: f, last_name: l, password_digest: pass, profile_pic: pic, email: em)
+user_list.each do |el|
+  User.create(first_name: el.first_name, last_name: el.last_name, password_digest: el.password_digest, profile_pic: el.profile_pic, email: el.email)
 end
