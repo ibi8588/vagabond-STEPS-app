@@ -10,7 +10,7 @@
   <% if days_ago < 1 %>
     <%= "Posted: today" %>
   <% else %>
-    <%"Posted: #{days_ago} days ago" %>
+    <%= "Posted: #{days_ago} days ago" %>
   <% end %><br />
   <% pic = @users.select do |user| %>
     <% if post.user_id == user.id %>

@@ -12,16 +12,15 @@
 <% city_posts.reverse.each do |cp| %>
 <div>
   <%= link_to "#{cp.title}", post_path(cp) %><br />
-  <%= image_tag src="#{cp.trip_pic}" %>
-  <p>
-    Author: <%= cp.author %>
-  </p>
-  <%= image_tag src="#{@users.find(cp.user_id).profile_pic}", width: "100px" %>
+  <%= image_tag src="#{cp.trip_pic}", width: "400px" %>
+  <p>Author: <%= cp.author %></p>
+  <p>Trip Date: <%= cp.trip_date %></p>
+  <%= image_tag src="#{@users.find(cp.user_id).profile_pic}", width: "100px", class: "img-circle" %>
   <% days_ago = date_subtr(cp.created_at.to_s) %>
   <% if days_ago < 1 %>
     <%= "Posted: today" %>
   <% else %>
-    <%"Posted: #{days_ago} days ago" %>
+    <%= "Posted: #{days_ago} days ago" %>
   <% end %><br />
   <%= truncate(cp.description, length: 1000) { link_to "read more", post_path(cp)} %><br />
   <% if cp.user_id == current_user.id %>

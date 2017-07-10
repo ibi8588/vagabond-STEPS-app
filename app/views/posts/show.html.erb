@@ -2,7 +2,14 @@
 
 <h4><%= @post.title %></h4>
 <%= image_tag("#{@post.trip_pic}", width: "400px") %>
-<p><%= @post.trip_date %></p>
+<p>Author: <%= @post.author %></p>
+<p>Trip Date: <%= @post.trip_date.strftime("%m-%d-%Y") %></p>
+<% days_ago = date_subtr(@post.created_at.to_s) %>
+<% if days_ago < 1 %>
+  <p><%= "Posted: Today" %></p>
+<% else %>
+  <p><%="Posted: #{days_ago} days ago" %></p>
+<% end %><br />
 <p><%= @post.description %></p>
 
 <h2>Comments</h2>
