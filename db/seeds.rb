@@ -10,11 +10,6 @@ Post.destroy_all
 User.destroy_all
 City.destroy_all
 
-City.create({ city: “Puerto Vallarta”, state:“Jalisco”, country:“Mexico”, photo: “http://hotelcrownparadiseclubpuertovallarta.com/filesystem/club-puerto-vallarta/blog-club-pv/puerto-vallarta-articulo.png” })
-City.create({ city:“Kauia”, state:“Hawaii”, country:“USA”, photo: “https://traveldigg.com/wp-content/uploads/2016/07/Kauai-Island-Waterfall-in-Hawaii.jpg” })
-City.create({ city:“San Francisco”, state:“California”, country:“USA”, photo: “http://baycityguide.com/media/00PU000000GrBwfMAF/Red-&-White-U-turn-under-GOLDEN-GATE.jpg”  })
-City.create({ city:“Paris”, state: “Île-de-France”, country:“France”, photo: “http://www.francetourisme.fr/images/soirees_a_paris/diner_croisiere/bateaux_mouches_paris_18h.jpg” })
-City.create({ city:“Kralendijk”, state: “Bonaire”, country:“Netherlands”, photo: “http://www.tourismbonaire.com/includes/images/gallery/BonaireCaribbean_3.jpg” })
 
 City.create({ city: "Puerto Vallarta", state:"Jalisco", country:"Mexico", photo: "http://hotelcrownparadiseclubpuertovallarta.com/filesystem/club-puerto-vallarta/blog-club-pv/puerto-vallarta-articulo.png" })
 City.create({ city:"Kauai", state:"Hawaii", country:"USA", photo: "https://traveldigg.com/wp-content/uploads/2016/07/Kauai-Island-Waterfall-in-Hawaii.jpg" })
