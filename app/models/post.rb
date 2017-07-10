@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  belongs_to :city
+  belongs_to :city, dependent: :destroy
   has_many :comments
 
   validates :title,

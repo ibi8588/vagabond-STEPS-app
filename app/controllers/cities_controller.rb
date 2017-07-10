@@ -9,4 +9,18 @@ class CitiesController < ApplicationController
     @users = User.all
   end
 
+  def new
+    @city = City.new
+  end
+
+  def create
+    city = City.new(city_params)
+    city.save
+  end
+
+ private
+  def city_params
+    params.require(:city).permit(:city, :state, :country, :photo)
+  end
+
 end
