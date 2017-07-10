@@ -14,7 +14,7 @@
 <p>Despcription: <%= @post.description %></p>
 
 <%= link_to "Edit Post", edit_post_path, class: "btn btn-default" %>
-<%= link_to "Delete Post", @post, :method => :delete , class: "btn btn-danger", data: {confirm: "Are you sure you want to delete #{cp.title}?" %> 
+<%= link_to "Delete Post", @post, :method => :delete , class: "btn btn-danger", data: {confirm: "Are you sure you want to delete #{@post.title}?" } %>
 <br>
 
 <h2>Comments</h2>
@@ -22,18 +22,20 @@
 <hr>
 <%= render @post.comments %>
 
-<h2>Add a comment:</h2>
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <div class="form-group">
-    <%= f.label :commenter %><br>
-    <%= current_user.first_name %>
-    <%= hidden_field(:user, :commenter) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :comment %><br>
-    <%= f.text_area :body, class: "form-control"  %>
-  </div>
-    <%= f.submit "Submit Comment", class: "btn btn-default" %>
+<% if current_user %>
+  <h2>Add a comment:</h2>
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+    <div class="form-group">
+      <%= f.label :commenter %><br>
+      <%= current_user.first_name %>
+      <%= hidden_field(:user, :commenter) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :comment %><br>
+      <%= f.text_area :body, class: "form-control"  %>
+    </div>
+      <%= f.submit "Submit Comment", class: "btn btn-default" %>
+  <% end %>
 <% end %>
 <hr>
 
