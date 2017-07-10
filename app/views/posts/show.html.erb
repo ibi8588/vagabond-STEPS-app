@@ -2,6 +2,7 @@
 
 <h4><%= @post.title %></h4>
 <%= image_tag("#{@post.trip_pic}", width: "400px") %>
+
 <p>Author: <%= @post.author %></p>
 <p>Trip Date: <%= @post.trip_date.strftime("%m-%d-%Y") %></p>
 <% days_ago = date_subtr(@post.created_at.to_s) %>
@@ -12,39 +13,28 @@
 <% end %><br />
 <p><%= @post.description %></p>
 
+<%= link_to "Edit Post", edit_post_path, class: "btn btn-default" %>
+<%= link_to "Delete Post", @post, :method => :delete , class: "btn btn-danger" %>
+<br>
+
 <h2>Comments</h2>
 <h4><%= @post.comments.count %> comments</h4>
 <hr>
 <%= render @post.comments %>
 
-<!-- <%= @post.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= current_user.email %>
-  </p>
-
-   <p>
-     <strong>Comment:</strong>
-     <%= comment.body %>
-   </p>
-<% end %> -->
-
 <h2>Add a comment:</h2>
 <%= form_for([@post, @post.comments.build]) do |f| %>
-  <p>
+  <div class="form-group">
     <%= f.label :commenter %><br>
-    <%= current_user.email %>
-  </p>
-  <p>
+    <%= current_user.first_name %>
+    <%= hidden_field(:user, :commenter) %>
+  </div>
+  <div class="form-group">
     <%= f.label :comment %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+    <%= f.text_area :body, class: "form-control"  %>
+  </div>
+    <%= f.submit "Submit Comment", class: "btn btn-default" %>
 <% end %>
+<hr>
 
-<%= link_to "Edit Post", edit_post_path, class: "btn btn-default" %>
-<%= link_to "Delete Post", @post, :method => :delete , class: "btn btn-danger" %>
-<br>
 <%= link_to "Return Home", root_path %>
