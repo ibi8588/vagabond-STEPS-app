@@ -4,7 +4,7 @@
 
 <% @posts.each do |post| %>
   <h3><%= link_to "#{post.title}", post_path(post) %></h3>
-    <%= image_tag src="#{post.trip_pic}", width: "200px" %>
+    <%= image_tag src="#{post.trip_pic}", width: "300px" %>
   <p>Trip Date: <%= post.trip_date %></p>
   <% days_ago = date_subtr(post.created_at.to_s) %>
   <% if days_ago < 1 %>
@@ -14,14 +14,14 @@
   <% end %><br />
   <% pic = @users.select do |user| %>
     <% if post.user_id == user.id %>
-        <%= image_tag src="#{user.profile_pic}", width:"100px" %><br />
+      <p> Author: <%= post.author %> <%= image_tag src="#{user.profile_pic}", width:"100px", class: "profile_pic" %></p><br />
     <% end %>
   <% end %>
-  <p><%= post.author %></p>
+
   <p><%= truncate(post.description, length: 1000) { link_to "read more", post_path(post)} %></p>
   <% if (current_user != nil && (post.user_id == current_user.id)) %>
-    <%= button_to "Edit this Post", edit_post_path(post), method: "get", action: "edit"%><br />
-    <%= button_to "Delete this Post", "/posts/#{post.id}", method: "delete", action:"destroy", data: {confirm: "Are you sure you want to delete #{post.title}?"} %>
+    <%= button_to "Edit this Post", edit_post_path(post), method: "get", action: "edit", class: "btn btn-default" %><br>
+    <%= button_to "Delete this Post", "/posts/#{post.id}", method: "delete", action:"destroy", class: "btn btn-danger", data: {confirm: "Are you sure you want to delete #{post.title}?"} %>
   <% end %>
   <br />
   <hr />
