@@ -16,10 +16,16 @@ City.create({ city:“San Francisco”, state:“California”, country:“USA�
 City.create({ city:“Paris”, state: “Île-de-France”, country:“France”, photo: “http://www.francetourisme.fr/images/soirees_a_paris/diner_croisiere/bateaux_mouches_paris_18h.jpg” })
 City.create({ city:“Kralendijk”, state: “Bonaire”, country:“Netherlands”, photo: “http://www.tourismbonaire.com/includes/images/gallery/BonaireCaribbean_3.jpg” })
 
+City.create({ city: "Puerto Vallarta", state:"Jalisco", country:"Mexico", photo: "http://hotelcrownparadiseclubpuertovallarta.com/filesystem/club-puerto-vallarta/blog-club-pv/puerto-vallarta-articulo.png" })
+City.create({ city:"Kauai", state:"Hawaii", country:"USA", photo: "https://traveldigg.com/wp-content/uploads/2016/07/Kauai-Island-Waterfall-in-Hawaii.jpg" })
+City.create({ city:"San Francisco", state:"California", country:"USA", photo: "http://cdn77.orangesmile.com/common/img_cities_original/san-francisco-20015732-6.jpg"  })
+City.create({ city:"Paris", state: "Île-de-France", country:"France", photo: "http://www.francetourisme.fr/images/soirees_a_paris/diner_croisiere/bateaux_mouches_paris_18h.jpg" })
+City.create({ city:"Kralendijk", state: "Bonaire", country:"Netherlands", photo: "http://www.tourismbonaire.com/includes/images/gallery/BonaireCaribbean_3.jpg" })
 
 
-User.create({ first_name: “Joe”, last_name:“Cool”,password: “easy”, profile_pic: “http://thecabin.net/sites/default/files/styles/teaser__620x350/public/images/3077531_web1_1024x1024.jpg?itok=1D9QhzEy”, email: “ed8588@gmail.com” })
-User.create({ first_name: “Natalie”, last_name:“Jones”,password: “easy”, profile_pic: “http://i.huffpost.com/gen/1127670/thumbs/o-OLDER-WOMAN-facebook.jpg”, email: “spamvacuum888@gmail.com” })
-User.create({ first_name: “William”, last_name:“Smith”,password: “easy”, profile_pic: “http://thecabin.net/sites/default/files/styles/teaser__620x350/public/images/3077531_web1_1024x1024.jpg?itok=1D9QhzEy”, email: “ibrahim.aldridge@gmail.com” })
-User.create({ first_name: “Sally”, last_name:“Smith”,password_: “easy”, profile_pic: “http://www.stylishwife.com/wp-content/uploads/2013/07/Hairstyles-For-Older-Women-3.jpg”, email: “westcaostswing@gmail.com” })
-User.create({ first_name: “Dan”, last_name:“Daniels”,password: “easy”, profile_pic: “http://www.ris.world/sites/default/files/o-OLD-GENTLEMAN-facebook.jpg”, email: “bestdayever@gmail.com” })
+
+User.create({ first_name: "Joe", last_name:"Cool",password: "easy", profile_pic: "http://2.media.dorkly.cvcdn.com/64/13/5f948f1c06d8b072a3a4c2992914ce21-joe-caputo.jpg", email: "ed8588@gmail.com" })
+User.create({ first_name: "Natalie", last_name:"Jones",password: "easy", profile_pic: "http://i.huffpost.com/gen/1127670/thumbs/o-OLDER-WOMAN-facebook.jpg", email: "spamvacuum888@gmail.com" })
+User.create({ first_name: "William", last_name:"Smith",password: "easy", profile_pic: "http://thecabin.net/sites/default/files/styles/teaser__620x350/public/images/3077531_web1_1024x1024.jpg?itok=1D9QhzEy", email: "ibrahim.aldridge@gmail.com" })
+User.create({ first_name: "Sally", last_name:"Smith",password: "easy", profile_pic: "http://www.stylishwife.com/wp-content/uploads/2013/07/Hairstyles-For-Older-Women-3.jpg", email: "westcaostswing@gmail.com" })
+User.create({ first_name: "Dan", last_name:"Daniels",password: "easy", profile_pic: "http://www.ris.world/sites/default/files/o-OLD-GENTLEMAN-facebook.jpg", email: "bestdayever@gmail.com" })

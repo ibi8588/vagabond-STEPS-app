@@ -6,11 +6,8 @@
 <%= button_to "Add New Post", new_post_path, action:"new", method: "get" %>
 
 <h2><%= @city.city %> Posts:</h2>
-<% city_posts = @posts.select do |post| %>
-  <% post.city_id == @city.id %>
-<% end %>
 
-<% city_posts.reverse.each do |cp| %>
+<% @city_posts.each do |cp| %>
 <div>
   <%= link_to "#{cp.title}", post_path(cp) %><br />
   <%= image_tag src="#{cp.trip_pic}", width: "400px" %>
@@ -31,3 +28,5 @@
   <br />
 </div>
 <%end %>
+
+<%= will_paginate @city_posts %>
