@@ -2,8 +2,16 @@
 
 <h4><%= @post.title %></h4>
 <%= image_tag("#{@post.trip_pic}", width: "400px") %>
-<p><%= @post.trip_date %></p>
-<p>Description: <%= @post.description %></p>
+
+<p>Author: <%= @post.author %></p>
+<p>Trip Date: <%= @post.trip_date.strftime("%m-%d-%Y") %></p>
+<% days_ago = date_subtr(@post.created_at.to_s) %>
+<% if days_ago < 1 %>
+  <p><%= "Posted: Today" %></p>
+<% else %>
+  <p><%="Posted: #{days_ago} days ago" %></p>
+<% end %><br />
+<p><%= @post.description %></p>
 
 <%= link_to "Edit Post", edit_post_path, class: "btn btn-default" %>
 <%= link_to "Delete Post", @post, :method => :delete , class: "btn btn-danger" %>
@@ -13,18 +21,6 @@
 <h4><%= @post.comments.count %> comments</h4>
 <hr>
 <%= render @post.comments %>
-
-<!-- <%= @post.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= current_user.email %>
-  </p>
-
-   <p>
-     <strong>Comment:</strong>
-     <%= comment.body %>
-   </p>
-<% end %> -->
 
 <h2>Add a comment:</h2>
 <%= form_for([@post, @post.comments.build]) do |f| %>

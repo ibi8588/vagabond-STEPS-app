@@ -19,7 +19,7 @@
   <% end %>
   <p><%= post.author %></p>
   <p><%= truncate(post.description, length: 1000) { link_to "read more", post_path(post)} %></p>
-  <% if post.user_id == current_user.id %>
+  <% if (current_user != nil && (post.user_id == current_user.id)) %>
     <%= button_to "Edit this Post", edit_post_path(post), method: "get", action: "edit"%><br />
     <%= button_to "Delete this Post", "/posts/#{post.id}", method: "delete", action:"destroy", data: {confirm: "Are you sure you want to delete #{post.title}?"} %>
   <% end %>
