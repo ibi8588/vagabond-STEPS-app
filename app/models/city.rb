@@ -1,6 +1,6 @@
 class City < ApplicationRecord
   has_many :posts
-  has_many :users, through: :posts
+  has_many :users
 
   validates_uniqueness_of :city
 
