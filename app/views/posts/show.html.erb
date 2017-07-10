@@ -13,8 +13,12 @@
 <% end %><br />
 <p>Despcription: <%= @post.description %></p>
 
+
+<!-- INSERT conditional to show these only if you are the author -->
+<% if (current_user != nil && (@post.user_id == current_user.id)) %>
 <%= link_to "Edit Post", edit_post_path, class: "btn btn-default" %>
 <%= link_to "Delete Post", @post, :method => :delete , class: "btn btn-danger", data: {confirm: "Are you sure you want to delete #{@post.title}?" } %>
+<% end %>
 <br>
 
 <h2>Comments</h2>
