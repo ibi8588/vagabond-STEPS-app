@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
   def show
     @post = Post.find(params[:post_id])
-    @comment = @post.comments
+    @comment = @post.comments.find(params[:id])
   end
 
   def new
@@ -26,10 +26,14 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:post_id])
+    @post = Post.find(params[:id])
     @comment = @post.comments.find(params[:id])
-    @comment.update_attributes(comment_params)
-    redirect_to post_path(@post)
+
+    if @comment.update(comments_params)
+      redirect_to post_path(@post)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

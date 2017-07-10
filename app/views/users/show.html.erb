@@ -31,7 +31,7 @@
                  data: { confirm: 'Are you sure?' } %>
   </p>
   <p>
-    <%= link_to 'Update Comment', edit_post_comment_path(comment.post) %>
+    <%= link_to 'Update Comment', [comment.post, comment] %>
   </p>
   <hr>
 <% end %>
