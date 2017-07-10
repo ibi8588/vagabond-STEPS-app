@@ -6,7 +6,10 @@
 <p><%= @post.description %></p>
 
 <h2>Comments</h2>
+<h4><%= @post.comments.count %> comments</h4>
+<hr>
 <%= render @post.comments %>
+
 <!-- <%= @post.comments.each do |comment| %>
   <p>
     <strong>Commenter:</strong>
@@ -26,7 +29,7 @@
     <%= current_user.email %>
   </p>
   <p>
-    <%= f.label :body %><br>
+    <%= f.label :comment %><br>
     <%= f.text_area :body %>
   </p>
   <p>
