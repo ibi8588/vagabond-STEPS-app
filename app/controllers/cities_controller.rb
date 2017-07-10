@@ -9,6 +9,7 @@ class CitiesController < ApplicationController
     @users = User.all
   end
 
+<<<<<<< HEAD
   def new
     @city = City.new
   end
@@ -22,5 +23,7 @@ class CitiesController < ApplicationController
   def city_params
     params.require(:city).permit(:city, :state, :country, :photo)
   end
+=======
+>>>>>>> master
 
 end

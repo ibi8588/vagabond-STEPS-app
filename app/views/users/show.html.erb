@@ -10,7 +10,7 @@
   <%= link_to "Edit my Profile Information", edit_user_path(@user) %>
 <% end %>
 <p>Join Date: <%= @user.created_at.to_formatted_s(:long_ordinal) %></p>
-<p>Contributions: <%= current_user.comments.count %> comments</p>
+<p>Contributions: <%= @user.comments.count %> comments</p>
 
 <h2>Recent Comments</h2>
 <% current_user.comments.includes(:post).each do |comment| %>
