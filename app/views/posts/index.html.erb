@@ -2,7 +2,7 @@
 
 <%= link_to "Add New Post", new_post_path %>
 
-<% @posts.reverse.each do |post| %>
+<% @posts.each do |post| %>
   <h3><%= link_to "#{post.title}", post_path(post) %></h3>
     <%= image_tag src="#{post.trip_pic}", width: "200px" %>
   <p>Trip Date: <%= post.trip_date %></p>
@@ -19,10 +19,12 @@
   <% end %>
   <p><%= post.author %></p>
   <p><%= truncate(post.description, length: 1000) { link_to "read more", post_path(post)} %></p>
-  <% if post.user_id == current_user.id %>
+  <% if (current_user != nil && (post.user_id == current_user.id)) %>
     <%= button_to "Edit this Post", edit_post_path(post), method: "get", action: "edit"%><br />
     <%= button_to "Delete this Post", "/posts/#{post.id}", method: "delete", action:"destroy", data: {confirm: "Are you sure you want to delete #{post.title}?"} %>
   <% end %>
   <br />
   <hr />
 <% end %>
+
+<%= will_paginate @posts %>

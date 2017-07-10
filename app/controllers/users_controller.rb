@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.welcome_email(@user).deliver
+      UserMailer.welcome_email(@user).deliver_now
       default_pic = "http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png"
       if @user.profile_pic == ""
         @user.profile_pic = default_pic
