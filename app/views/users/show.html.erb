@@ -14,12 +14,8 @@
 
 <h2>Recent Comments</h2>
 <% current_user.comments.includes(:post).each do |comment| %>
-  <h3><%= comment.post.title %></h3>
+  <h3><%= link_to "#{comment.post.title}", post_comment_path(comment.post, comment) %></h3>
 
-  <p>
-    <strong>Commenter:</strong>
-    <%= current_user.email %>
-  </p>
   <p>
     <strong>Comment:</strong>
     <%= comment.body %>
@@ -28,10 +24,11 @@
   <p>
     <%= link_to 'Delete Comment', [comment.post, comment],
                  method: :delete,
-                 data: { confirm: 'Are you sure?' } %>
+                 data: { confirm: 'Are you sure?' },
+                 class: "btn btn-danger" %>
   </p>
   <p>
-    <%= link_to 'Update Comment', edit_post_comment_path(comment.post, comment) %>
+    <%= link_to 'Update Comment', edit_post_comment_path(comment.post, comment), class: "btn btn-default" %>
   </p>
   <hr>
 <% end %>
