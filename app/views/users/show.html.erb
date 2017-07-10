@@ -30,5 +30,8 @@
                  method: :delete,
                  data: { confirm: 'Are you sure?' } %>
   </p>
+  <p>
+    <%= link_to 'Update Comment', edit_post_comment_path(comment.post) %>
+  </p>
   <hr>
 <% end %>
