@@ -21,7 +21,7 @@
   <% if days_ago < 1 %>
     <%= "Posted: today" %>
   <% else %>
-    <%"Posted: #{days_ago} days ago" %>
+    <%= "Posted: #{days_ago} days ago" %>
   <% end %><br />
   <%= truncate(cp.description, length: 1000) { link_to "read more", post_path(cp)} %><br />
   <% if cp.user_id == current_user.id %>
