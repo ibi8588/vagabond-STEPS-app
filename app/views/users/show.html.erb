@@ -11,3 +11,17 @@
 <% end %>
 <p>Join Date: <%= @user.created_at.to_formatted_s(:long_ordinal) %></p>
 <p>Contributions: <%= current_user.comments.count %> comments</p>
+
+<h2>Recent Comments</h2>
+<% current_user.comments.includes(:post).each do |comment| %>
+  <h3><%= comment.post.title %></h3>
+  <p>
+    <strong>Commenter:</strong>
+    <%= current_user.email %>
+  </p>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+  <hr>
+<% end %>
