@@ -28,3 +28,7 @@ h1, h1 a, h1 a:hover {
 body {
   font-family: 'Poppins', sans-serif;
 }
+
+.profile_pic {
+  margin: 10px;
+}
