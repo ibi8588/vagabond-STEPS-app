@@ -1,6 +1,6 @@
 <h2>Edit comment:</h2>
 
-<%= form_for([@post, @post.comments.build]) do |f| %>
+<%= form_for([@post, @comment]) do |f| %>
   <div class="form-group">
     <%= f.text_area :body, value: @comment.body, class: "form-control" %>
   </div><br>
