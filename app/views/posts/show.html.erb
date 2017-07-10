@@ -1,7 +1,41 @@
+<p id="notice"><%= notice %></p>
+
 <h4><%= @post.title %></h4>
 <%= image_tag("#{@post.trip_pic}", width: "400px") %>
 <p><%= @post.trip_date %></p>
 <p><%= @post.description %></p>
+
+<h2>Comments</h2>
+<h4><%= @post.comments.count %> comments</h4>
+<hr>
+<%= render @post.comments %>
+
+<!-- <%= @post.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= current_user.email %>
+  </p>
+
+   <p>
+     <strong>Comment:</strong>
+     <%= comment.body %>
+   </p>
+<% end %> -->
+
+<h2>Add a comment:</h2>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <p>
+    <%= f.label :commenter %><br>
+    <%= current_user.email %>
+  </p>
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 <%= link_to "Edit Post", edit_post_path, class: "btn btn-default" %>
 <%= link_to "Delete Post", @post, :method => :delete , class: "btn btn-danger" %>

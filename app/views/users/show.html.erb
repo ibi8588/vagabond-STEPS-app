@@ -1,6 +1,6 @@
 <h1>USER SHOW PAGE</h1>
 
-<h3><%= @user.first_name %> <%=@user.last_name %></h3>
+<h3><%= @user.first_name %> <%= @user.last_name %></h3>
 <p>
   <% @user %>
   Email: <%= @user.email %>
@@ -9,4 +9,29 @@
 <% if current_user.id == @user.id %>
   <%= link_to "Edit my Profile Information", edit_user_path(@user) %>
 <% end %>
-<p>Join Date: <%= @user.created_at.to_formatted_s(:long_ordinal)  %></p>
+<p>Join Date: <%= @user.created_at.to_formatted_s(:long_ordinal) %></p>
+<p>Contributions: <%= current_user.comments.count %> comments</p>
+
+<h2>Recent Comments</h2>
+<% current_user.comments.includes(:post).each do |comment| %>
+  <h3><%= comment.post.title %></h3>
+
+  <p>
+    <strong>Commenter:</strong>
+    <%= current_user.email %>
+  </p>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+
+  <p>
+    <%= link_to 'Delete Comment', [comment.post, comment],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' } %>
+  </p>
+  <p>
+    <%= link_to 'Update Comment', edit_post_comment_path(comment.post) %>
+  </p>
+  <hr>
+<% end %>
