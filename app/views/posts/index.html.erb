@@ -2,7 +2,7 @@
 
 <%= link_to "Add New Post", new_post_path %>
 
-<% @posts.reverse.each do |post| %>
+<% @posts.each do |post| %>
   <h3><%= link_to "#{post.title}", post_path(post) %></h3>
     <%= image_tag src="#{post.trip_pic}", width: "200px" %>
   <p>Trip Date: <%= post.trip_date %></p>
@@ -26,3 +26,5 @@
   <br />
   <hr />
 <% end %>
+
+<%= will_paginate @posts %>
