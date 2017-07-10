@@ -11,10 +11,10 @@
 <% else %>
   <p><%="Posted: #{days_ago} days ago" %></p>
 <% end %><br />
-<p><%= @post.description %></p>
+<p>Despcription: <%= @post.description %></p>
 
 <%= link_to "Edit Post", edit_post_path, class: "btn btn-default" %>
-<%= link_to "Delete Post", @post, :method => :delete , class: "btn btn-danger" %>
+<%= link_to "Delete Post", @post, :method => :delete , class: "btn btn-danger", data: {confirm: "Are you sure you want to delete #{cp.title}?" %> 
 <br>
 
 <h2>Comments</h2>

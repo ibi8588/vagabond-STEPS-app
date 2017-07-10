@@ -1,9 +1,11 @@
-<h1>Edit User</h1>
+<h2>Edit Profile</h2>
 
 <%= form_for @user do |f| %>
-  <p>First Name: <%= f.text_field :first_name, placeholder: "Edith" %></p>
-  <p>Last Name: <%= f.text_field :last_name, placeholder: "Piaf" %></p>
-  <p>Email: <%= f.text_field :email %></p>
-  <p>Profile Picture: <%= f.text_field :profile_pic %></p>
-  <%= f.submit "Save Profile Changes" %>
+<div class="form-group">
+  <p>First Name: <%= f.text_field :first_name, class: "form-control" %></p>
+  <p>Last Name: <%= f.text_field :last_name, class: "form-control" %></p>
+  <p>Email: <%= f.text_field :email, class: "form-control" %></p>
+  <p>Profile Picture: <%= f.text_field :profile_pic, class: "form-control" %></p>
+  <%= f.submit "Save Profile Changes", class: "btn btn-default" %>
+</div>
 <% end %>
