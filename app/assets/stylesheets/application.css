@@ -29,6 +29,11 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.navbar, .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-right.li {
+
+  border-color: #FFFFFF;
+}
+
 .profile_pic {
   margin: 10px;
 }
