@@ -2,28 +2,28 @@
 <h4>State: <%= @city.state %></h4>
 <h4>Country: <%= @city.country %></h4>
 
-<%= image_tag src="#{@city.photo}" %><br />
-<%= button_to "Add New Post", new_post_path, action:"new", method: "get" %>
+<div><%= image_tag src="#{@city.photo}", width: "800px" %></div><br>
+<%= button_to "Add New Post", new_post_path, action:"new", method: "get", class: "btn btn-default" %>
+<hr>
 
 <h2><%= @city.city %> Posts:</h2>
 
 <% @city_posts.each do |cp| %>
 <div>
-  <%= link_to "#{cp.title}", post_path(cp) %><br />
+  <h2><%= link_to "#{cp.title}", post_path(cp) %></h2><br />
   <%= image_tag src="#{cp.trip_pic}", width: "400px" %>
-  <p>Author: <%= cp.author %></p>
+  <p>Author: <%= cp.author %><%= image_tag src="#{@users.find(cp.user_id).profile_pic}", width: "100px", class: "profile_pic" %></p> 
   <p>Trip Date: <%= cp.trip_date %></p>
-  <%= image_tag src="#{@users.find(cp.user_id).profile_pic}", width: "100px", class: "img-circle" %>
   <% days_ago = date_subtr(cp.created_at.to_s) %>
   <% if days_ago < 1 %>
-    <%= "Posted: today" %>
+    <p><%= "Posted: today" %></p>
   <% else %>
-    <%= "Posted: #{days_ago} days ago" %>
-  <% end %><br />
-  <%= truncate(cp.description, length: 1000) { link_to "read more", post_path(cp)} %><br />
+    <p><%= "Posted: #{days_ago} days ago" %></p>
+  <% end %>
+  <p>Description: <%= truncate(cp.description, length: 1000) { link_to "read more", post_path(cp)} %></p>
   <% if cp.user_id == current_user.id %>
-    <%= button_to "Edit this Post", edit_post_path(cp), method: "get", action: "edit"%><br />
-    <%= button_to "Delete this Post", "/posts/#{cp.id}", method: "delete", action:"destroy", data: {confirm: "Are you sure you want to delete #{cp.title}?"} %>
+    <%= button_to "Edit this Post", edit_post_path(cp), class: "btn btn-default", method: "get", action: "edit"%><br />
+    <%= button_to "Delete this Post", "/posts/#{cp.id}", class: "btn btn-default", method: "delete", action:"destroy", data: {confirm: "Are you sure you want to delete #{cp.title}?"} %>
   <% end %>
   <br />
 </div>

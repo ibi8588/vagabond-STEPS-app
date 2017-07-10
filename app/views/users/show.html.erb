@@ -1,16 +1,18 @@
-<h1>USER SHOW PAGE</h1>
 
 <h3><%= @user.first_name %> <%= @user.last_name %></h3>
 <p>
-  <% @user %>
-  Email: <%= @user.email %>
+  <% if current_user.id == @user.id %>
+    <%= link_to "Edit Profile Information", edit_user_path(@user) %>
+  <% end %>
 </p>
-<%= image_tag src="#{@user.profile_pic}", width:"200px" %><hr />
-<% if current_user.id == @user.id %>
-  <%= link_to "Edit my Profile Information", edit_user_path(@user) %>
-<% end %>
-<p>Join Date: <%= @user.created_at.to_formatted_s(:long_ordinal) %></p>
-<p>Contributions: <%= @user.comments.count %> comments</p>
+<%= image_tag src="#{@user.profile_pic}", width:"200px", class: "profile_pic" %><br><br>
+<p><strong>Join Date:</strong> <%= @user.created_at.to_formatted_s(:long_ordinal) %></p>
+<p><strong>Contributions:</strong> <%= @user.comments.count %> comments</p>
+<p>
+  <% @user %>
+  <strong>Email:</strong> <%= @user.email %>
+</p>
+<hr />
 
 <h2>Recent Comments</h2>
 <% current_user.comments.includes(:post).each do |comment| %>
