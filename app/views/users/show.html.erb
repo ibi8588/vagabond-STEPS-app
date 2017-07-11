@@ -21,7 +21,7 @@
     <%= comment.body %>
   </p>
 
-  <% if current_user.id == @user.id %>
+  <% if current_user && (current_user.id == @user.id) %>
     <%= link_to 'Delete Comment', [comment.post, comment],
                  method: :delete,
                  data: { confirm: 'Are you sure?' },
