@@ -3,7 +3,7 @@
 <h4><%= @post.title %></h4>
 <%= image_tag("#{@post.trip_pic}", width: "400px") %>
 
-<p>Author: <%= @post.author %></p>
+<p>Author: <%= link_to "#{@post.author}", user_path(@post.author.split(" ").first) %></p>
 <p>Trip Date: <%= @post.trip_date.strftime("%m-%d-%Y") %></p>
 <% days_ago = date_subtr(@post.created_at.to_s) %>
 <% if days_ago < 1 %>

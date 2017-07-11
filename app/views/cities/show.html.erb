@@ -12,7 +12,7 @@
   <div>
     <h2><%= link_to "#{cp.title}", post_path(cp) %></h2><br />
     <%= image_tag src="#{cp.trip_pic}", width: "400px" %>
-    <p>Author: <%= cp.author %><%= image_tag src="#{@users.find(cp.user_id).profile_pic}", width: "100px", class: "profile_pic" %></p>
+    <p>Author: <%= link_to "#{cp.author}", user_path(cp.author.split(" ").first) %><%= image_tag src="#{@users.find(cp.user_id).profile_pic}", width: "100px", class: "profile_pic" %></p>
     <p>Trip Date: <%= cp.trip_date %></p>
     <% days_ago = date_subtr(cp.created_at.to_s) %>
     <% if days_ago < 1 %>

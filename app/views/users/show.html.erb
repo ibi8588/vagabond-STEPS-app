@@ -4,7 +4,7 @@
   Email: <%= @user.email %>
 </p>
 <%= image_tag src="#{@user.profile_pic}", width:"200px" %><hr />
-<% if current_user.id == @user.id %>
+<% if current_user && (current_user.id == @user.id) %>
   <%= link_to "Edit my Profile Information", edit_user_path(@user) %>
 <% end %>
 <p>Join Date: <%= @user.created_at.to_formatted_s(:long_ordinal) %></p>
@@ -13,7 +13,7 @@
 <p>Comment Contributions: <%= @user.comments.count %> comments</p>
 
 <h2>Recent Comments</h2>
-<% current_user.comments.includes(:post).each do |comment| %>
+<% @user.comments.includes(:post).each do |comment| %>
   <h3><%= link_to "#{comment.post.title}", post_comment_path(comment.post, comment) %></h3>
 
   <p>
@@ -21,14 +21,12 @@
     <%= comment.body %>
   </p>
 
-  <p>
+  <% if current_user %>
     <%= link_to 'Delete Comment', [comment.post, comment],
                  method: :delete,
                  data: { confirm: 'Are you sure?' },
                  class: "btn btn-danger" %>
-  </p>
-  <p>
     <%= link_to 'Update Comment', edit_post_comment_path(comment.post, comment), class: "btn btn-default" %>
-  </p>
+  <% end %>
   <hr>
 <% end %>
