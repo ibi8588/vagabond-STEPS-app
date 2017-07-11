@@ -26,7 +26,7 @@
 <hr>
 
 <% @post.comments.each do |comment| %>
-  <p><%= comment.commenter %> says: </p><br />
+  <p><%= link_to "#{comment.commenter}", user_path(comment.commenter) %> says: </p><br />
   <%= comment.body %><br />
   <% if current_user && (current_user.first_name == comment.commenter) %>
     <%= link_to 'Delete Comment', [comment.post, comment],
@@ -35,6 +35,7 @@
                  class: "btn btn-danger" %>
     <%= link_to 'Update Comment', edit_post_comment_path(comment.post, comment), class: "btn btn-default" %>
   <% end %>
+  <hr>
 <% end %>
 
 <% if current_user %>

@@ -15,7 +15,7 @@
 <h2>Recent Comments</h2>
 <% @comments.each do |comment| %>
   <% if comment.commenter == @user.first_name %>
-    <h3><%= link_to "#{comment.post.title}", post_comment_path(comment.post, comment) %></h3>
+    <h3><%= link_to "#{comment.post.title}", post_path(comment.post) %></h3>
 
     <p>
       <strong>Comment:</strong>
