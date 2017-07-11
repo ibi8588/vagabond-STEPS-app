@@ -21,8 +21,7 @@
 <% end %>
 <br>
 
-<h2>Comments</h2>
-<h4><%= @post.comments.count %> comments</h4>
+<h4><span class='badge'><%= @post.comments.count %> comments</span></h4>
 <hr>
 
 <% @post.comments.each do |comment| %>
@@ -42,12 +41,9 @@
   <h2>Add a comment:</h2>
   <%= form_for([@post, @post.comments.build]) do |f| %>
     <div class="form-group">
-      <%= f.label :commenter %><br>
-      <%= current_user.first_name %>
       <%= hidden_field(:user, :commenter) %>
     </div>
     <div class="form-group">
-      <%= f.label :comment %><br>
       <%= f.text_area :body, class: "form-control"  %>
     </div>
       <%= f.submit "Submit Comment", class: "btn btn-default" %>

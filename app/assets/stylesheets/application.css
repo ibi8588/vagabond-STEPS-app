@@ -18,7 +18,9 @@
 
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
-
+* {
+  background-color: #f2f2f2;
+}
 h1, h1 a, h1 a:hover {
   font-size: 50px;
   font-family: 'Nunito Sans', sans-serif;
@@ -27,13 +29,31 @@ h1, h1 a, h1 a:hover {
 
 body {
   font-family: 'Poppins', sans-serif;
+  background-color: #f2f2f2;
 }
 
 .navbar, .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-right.li {
-
+  font-size: 30px;
+  padding: 10px;
   border-color: #FFFFFF;
+  background-color: #000;
 }
-
+#myNavbar, div.container-fluid, .nav > li > a {
+  background-color: #000;
+}
+.container-fluid .nav > li:hover > a {
+  background-color: #000;
+}
 .profile_pic {
   margin: 10px;
+}
+
+.badge {
+  margin-top: 20px;
+  padding: 5px;
+}
+
+
+footer {
+  padding: 20px;
 }
