@@ -24,7 +24,18 @@
 <h2>Comments</h2>
 <h4><%= @post.comments.count %> comments</h4>
 <hr>
-<%= render @post.comments %>
+
+<% @post.comments.each do |comment| %>
+  <p><%= comment.commenter %> says: </p><br />
+  <%= comment.body %><br />
+  <% if current_user && (current_user.first_name == comment.commenter) %>
+    <%= link_to 'Delete Comment', [comment.post, comment],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' },
+                 class: "btn btn-danger" %>
+    <%= link_to 'Update Comment', edit_post_comment_path(comment.post, comment), class: "btn btn-default" %>
+  <% end %>
+<% end %>
 
 <% if current_user %>
   <h2>Add a comment:</h2>

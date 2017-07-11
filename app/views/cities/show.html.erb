@@ -23,7 +23,7 @@
     <p>Description: <%= truncate(cp.description, length: 1000) { link_to "read more", post_path(cp)} %></p>
     <% if current_user && (cp.user_id == current_user.id) %>
       <%= button_to "Edit this Post", edit_post_path(cp), class: "btn btn-default", method: "get", action: "edit"%><br />
-      <%= button_to "Delete this Post", "/posts/#{cp.id}", class: "btn btn-default", method: "delete", action:"destroy", data: {confirm: "Are you sure you want to delete #{cp.title}?"} %>
+      <%= button_to "Delete this Post", "/posts/#{cp.id}", class: "btn btn-danger", method: "delete", action:"destroy", data: {confirm: "Are you sure you want to delete #{cp.title}?"} %>
     <% end %>
     <br />
   </div>

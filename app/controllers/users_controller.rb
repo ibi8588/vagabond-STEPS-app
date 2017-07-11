@@ -25,12 +25,11 @@ class UsersController < ApplicationController
       flash[:error] = @user.errors.full_messages
       redirect_to new_user_path
     end
-
-
   end
 
     def show
       @user = User.find_by_first_name(params[:id])
+      @comments = Comment.all
     end
 
     def edit
