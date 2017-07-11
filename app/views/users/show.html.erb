@@ -13,20 +13,21 @@
 <p>Comment Contributions: <%= @user.comments.count %> comments</p>
 
 <h2>Recent Comments</h2>
-<% @user.comments.includes(:post).each do |comment| %>
-  <h3><%= link_to "#{comment.post.title}", post_comment_path(comment.post, comment) %></h3>
+<% @comments.each do |comment| %>
+  <% if comment.commenter == @user.first_name %>
+    <h3><%= link_to "#{comment.post.title}", post_comment_path(comment.post, comment) %></h3>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
 
-  <% if current_user && (current_user.id == @user.id) %>
-    <%= link_to 'Delete Comment', [comment.post, comment],
-                 method: :delete,
-                 data: { confirm: 'Are you sure?' },
-                 class: "btn btn-danger" %>
-    <%= link_to 'Update Comment', edit_post_comment_path(comment.post, comment), class: "btn btn-default" %>
+    <% if current_user && (current_user.id == @user.id) %>
+      <%= link_to 'Delete Comment', [comment.post, comment],
+                   method: :delete,
+                   data: { confirm: 'Are you sure?' },
+                   class: "btn btn-danger" %>
+      <%= link_to 'Update Comment', edit_post_comment_path(comment.post, comment), class: "btn btn-default" %>
+    <% end %>
   <% end %>
-  <hr>
 <% end %>
