@@ -14,7 +14,7 @@
   <% end %><br />
   <% pic = @users.select do |user| %>
     <% if post.user_id == user.id %>
-      <p> Author: <%= post.author %> <%= image_tag src="#{user.profile_pic}", width:"100px", class: "profile_pic" %></p><br />
+      <p> Author: <%= link_to "#{post.author}", user_path(post.author.split(" ").first) %> <%= image_tag src="#{user.profile_pic}", width:"100px", class: "profile_pic" %></p><br />
     <% end %>
   <% end %>
 
